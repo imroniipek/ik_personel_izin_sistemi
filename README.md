@@ -38,8 +38,6 @@ Backend tarafında .NET 8, MediatR (CQRS), FluentValidation, JWT Authentication 
 * Yönetici atama ve silme işlemleri
 * Personel izin talep sistemi
 * İzin onay / reddetme sistemi
-* JWT tabanlı authentication ve authorization
-* Role-based access control
 * Reactive state management
 * Merkezi validation yapısı
 * Kurumsal mimariye uygun katmanlı yapı
@@ -51,10 +49,8 @@ Frontend tarafında component bazlı modüler yapı kullanılmıştır. NgRx ile
 Backend tarafında ise:
 
 * Command / Query ayrımı (CQRS)
-* MediatR pipeline behavior
 * Repository pattern
 * ServiceResult pattern
-* FluentValidation pipeline
 * Dependency Injection
 
 yaklaşımları uygulanmıştır.
