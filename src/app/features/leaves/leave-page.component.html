@@ -1,0 +1,38 @@
+﻿<div class="leave-page">
+
+  <h2>Personel İzin Sayfası</h2>
+
+  <div *ngIf="loading$ | async">
+    Yükleniyor...
+  </div>
+
+  <div *ngIf="error$ | async as error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="successMessage$ | async as message" class="success">
+    {{ message }}
+  </div>
+
+  <div *ngIf="summary$ | async as summary" class="summary-box">
+    <h3>İzin Özeti</h3>
+    <p>Toplam İzin Hakkı: {{ summary.totalLeaveRight }}</p>
+    <p>Kullanılan İzin: {{ summary.usedLeaveDays }}</p>
+    <p>Kalan İzin Hakkı: {{ summary.remainingLeaveDays }}</p>
+  </div>
+
+  <hr>
+
+  <h3>Yeni İzin Oluştur</h3>
+
+  <label>Başlangıç Tarihi</label>
+  <input type="date" [(ngModel)]="startedDate">
+
+  <label>Bitiş Tarihi</label>
+  <input type="date" [(ngModel)]="endedDate">
+
+  <button (click)="createLeave()">
+    İzin Oluştur
+  </button>
+
+</div>

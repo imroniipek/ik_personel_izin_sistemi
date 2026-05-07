@@ -1,0 +1,70 @@
+﻿<div class="dashboard-page">
+
+  <div class="logo-bg"></div>
+
+  <header class="topbar">
+    <div>
+      <h1>Personel ve Departman Yönetim Paneli</h1>
+      <p>Kurum içi personel, departman ve yönetici süreçlerini kolayca yönetin.</p>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat-card" routerLink="/personels/list">
+      <div class="stat-icon blue">👥</div>
+      <div>
+        <h3>{{ toplamPersonelSayisi }}</h3>
+        <p>Toplam Personel</p>
+      </div>
+    </div>
+
+    <div class="stat-card" routerLink="/departments/create">
+      <div class="stat-icon green">🏢</div>
+      <div>
+        <h3>{{ toplamDepartmentSayisi }}</h3>
+        <p>Departman</p>
+      </div>
+    </div>
+
+    <div class="stat-card" routerLink="/manager/create">
+      <div class="stat-icon orange">👔</div>
+      <div>
+        <h3>{{ toplamYoneticiSayisi }}</h3>
+        <p>Yönetici</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard-grid">
+    <div class="panel large-panel">
+      <div class="panel-header">
+        <h2>Hızlı İşlemler</h2>
+        <span>Tüm süreçler</span>
+      </div>
+
+      <div class="quick-actions">
+        <div class="action-card" routerLink="/departments/create">
+          <div class="action-icon">🏢</div>
+          <h3>Departman Oluştur</h3>
+          <p>Yeni departman ekleyin ve kurumsal yapıyı yönetin.</p>
+          <button>İşleme Git</button>
+        </div>
+
+        <div class="action-card" routerLink="/personels/create">
+          <div class="action-icon">👤</div>
+          <h3>Personel Ekle</h3>
+          <p>Yeni personel kaydı oluşturun ve sisteme dahil edin.</p>
+          <button>İşleme Git</button>
+        </div>
+
+        <div class="action-card" routerLink="/manager/create">
+          <div class="action-icon">👔</div>
+          <h3>Manager Ata</h3>
+          <p>Departmanlara yönetici atayın ve görev dağılımı yapın.</p>
+          <button>İşleme Git</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

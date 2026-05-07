@@ -1,0 +1,38 @@
+﻿<div class="personel-layout">
+
+  <aside class="personel-sidebar">
+
+
+    <div class="brand">
+      <img src="/halkbank.png" alt="Halkbank Logo">
+    </div>
+
+    <div class="panel-title">
+      <h2>Personel Paneli</h2>
+    </div>
+    <nav class="menu">
+      <a routerLink="/personel/bilgilerim" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">👤</span>
+        <span>Bilgilerim</span>
+      </a>
+
+      <a routerLink="/personel/izin-talebi" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">📝</span>
+        <span>İzin Talebi</span>
+      </a>
+
+      <a routerLink="/personel/izin-gecmisi" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">📄</span>
+        <span>İzin Geçmişim</span>
+      </a>
+    </nav>
+
+    <button class="logout" (click)="logout()">Çıkış Yap</button>
+
+  </aside>
+
+  <main class="personel-content">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

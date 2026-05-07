@@ -1,0 +1,37 @@
+﻿<div class="page">
+  <div class="page-header">
+    <h1>Personel Listesi</h1>
+    <p>Sistemde kayıtlı tüm personelleri buradan görüntüleyebilirsiniz.</p>
+  </div>
+
+  <div class="table-wrapper" *ngIf="PersonelList.length > 0; else emptyState">
+    <table class="personel-table">
+      <thead>
+      <tr>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Email</th>
+        <th>Departman</th>
+        <th>İşe Giriş Tarihi</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let personel of PersonelList">
+        <td>{{ personel.firstName }}</td>
+        <td>{{personel.lastName}}</td>
+        <td>{{ personel.email }}</td>
+        <td>{{ personel.departmentName }}</td>
+        <td>{{personel.hireDate}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-box">
+      <h2>Henüz personel yok</h2>
+      <p>Veritabanında kayıtlı personel bulunamadı.</p>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,91 @@
+﻿.page {
+  padding: 24px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background: #0f172a;
+  color: white;
+}
+
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:hover {
+  background: #f1f5f9;
+}
+
+/* Buttons */
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 8px;
+  transition: 0.2s;
+}
+
+/* Approve */
+button:first-child {
+  background: #22c55e;
+  color: white;
+}
+
+button:first-child:hover {
+  background: #16a34a;
+}
+
+/* Reject */
+button:last-child {
+  background: #ef4444;
+  color: white;
+}
+
+button:last-child:hover {
+  background: #dc2626;
+}
+
+
+
+.loading {
+  padding: 12px;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+
+
+.error {
+  padding: 12px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}

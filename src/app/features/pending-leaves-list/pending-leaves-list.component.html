@@ -1,0 +1,42 @@
+﻿<div class="page">
+
+  <h2>Onay Bekleyen İzinler</h2>
+
+  <div *ngIf="loading$ | async">
+    Yükleniyor...
+  </div>
+
+  <div *ngIf="errorMessage$ | async as errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <table *ngIf="pendingLeaves$ | async as pendingLeaves">
+    <thead>
+    <tr>
+      <th>Personel</th>
+      <th>Başlangıç</th>
+      <th>Bitiş</th>
+      <th>İşlem</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let leave of pendingLeaves">
+      <td>{{ leave.firstName }} {{ leave.lastName }}</td>
+      <td>{{ leave.startedDate }}</td>
+      <td>{{ leave.endendDate }}</td>
+
+      <td>
+        <button type="button" (click)="approveLeave(leave)">
+          Onayla
+        </button>
+
+        <button type="button" (click)="rejectLeave(leave)">
+          Reddet
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

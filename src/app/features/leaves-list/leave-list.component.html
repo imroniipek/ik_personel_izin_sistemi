@@ -1,0 +1,45 @@
+﻿<div class="leave-page">
+
+  <h2>İzin Listesi</h2>
+
+  <div class="button-group">
+    <button class="accepted" (click)="getAcceptedLeaves()">
+      Onaylanan İzinler
+    </button>
+
+    <button class="pending" (click)="getPendingLeaves()">
+      Bekleyen İzinler
+    </button>
+
+    <button class="rejected" (click)="getRejectedLeaves()">
+      Reddedilen İzinler
+    </button>
+  </div>
+
+  <p class="count">
+    Toplam kayıt: {{ (leaves$ | async)?.length }}
+  </p>
+
+  <div *ngIf="error$ | async as error" class="error">
+    {{ error }}
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Başlangıç</th>
+      <th>Bitiş</th>
+      <th>Durum</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let leave of leaves$ | async">
+      <td>{{ leave.startedDate }}</td>
+      <td>{{ leave.endedDate }}</td>
+      <td>{{ getLeaveStatusName(leave.status) }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

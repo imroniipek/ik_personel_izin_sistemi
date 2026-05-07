@@ -1,0 +1,53 @@
+﻿<div class="personel-info-page">
+
+  <section class="hero">
+    <div>
+      <h1>Kişisel Bilgilerim</h1>
+      <p>Departman, yönetici ve işe başlangıç bilgilerinizi buradan görüntüleyebilirsiniz.</p>
+    </div>
+
+  </section>
+
+  <div class="personel-card" *ngIf="personel$ | async as personel">
+
+    <div class="card-top">
+      <div class="avatar">
+        {{ personel.firstName.charAt(0) }}{{ personel.lastName.charAt(0) }}
+      </div>
+
+      <div>
+        <h3>{{ personel.firstName }} {{ personel.lastName }}</h3>
+        <span>{{ personel.departmentName }}</span>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <label>Ad</label>
+        <p>{{ personel.firstName }}</p>
+      </div>
+
+      <div class="info-item">
+        <label>Soyad</label>
+        <p>{{ personel.lastName }}</p>
+      </div>
+
+      <div class="info-item">
+        <label>Departman</label>
+        <p>{{ personel.departmentName }}</p>
+      </div>
+
+      <div class="info-item">
+        <label>Yönetici</label>
+        <p>{{ personel.managerName }}</p>
+      </div>
+
+      <div class="info-item full">
+        <label>İşe Başlama Tarihi</label>
+        <p>{{ personel.hireDate }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

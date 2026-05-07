@@ -1,0 +1,52 @@
+﻿<ng-container *ngIf="isLoginPage() || isPersonelPage() || isManagerPage(); else adminLayout">
+  <router-outlet></router-outlet>
+</ng-container>
+<ng-template #adminLayout>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">İK</div>
+        <div>
+          <h2>İK Yönetim</h2>
+          <p>Kurumsal Panel</p>
+        </div>
+      </div>
+      <div class="brand-picture">
+        <img src="/halkbank.png" alt="Halkbank Logo">
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item" routerLink="/dashboard" routerLinkActive="active">
+          <span>🏠</span>
+          <span>Ana Sayfa</span>
+        </a>
+
+        <a class="menu-item" routerLink="/departments/create" routerLinkActive="active">
+          <span>🏢</span>
+          <span>Departman Oluştur</span>
+        </a>
+
+        <a class="menu-item" routerLink="/personels/create" routerLinkActive="active">
+          <span>👤</span>
+          <span>Personel Ekle</span>
+        </a>
+
+        <a class="menu-item" routerLink="/personels/list" routerLinkActive="active">
+          <span>📋</span>
+          <span>Personel Listesi</span>
+        </a>
+
+        <a class="menu-item" routerLink="/manager/create" routerLinkActive="active">
+          <span>👔</span>
+          <span>Manager Ata</span>
+        </a>
+      </nav>
+
+      <button class="logout" (click)="logout()">Çıkış Yap</button>
+    </aside>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</ng-template>

@@ -1,0 +1,66 @@
+﻿<div class="manager-create-page">
+
+  <h2>Manager Atama</h2>
+
+  <div *ngIf="ErrorMessage.trim() !== ''" class="error-message">
+    {{ ErrorMessage }}
+  </div>
+
+  <div *ngIf="SuccessMessage.trim() !== ''" class="success-message">
+    {{ SuccessMessage }}
+  </div>
+
+  <div class="form-group">
+    <label for="department">Departman Seçiniz</label>
+
+    <select
+      id="department"
+      [value]="DepartmentId"
+      (change)="onDepartmentSelected($event)">
+
+      <option value="0">Departman seçiniz</option>
+
+      <option *ngFor="let department of DepartmentList" [value]="department.departmentId">
+        {{ department.name }}
+      </option>
+    </select>
+  </div>
+
+  <div
+    class="personel-list"
+    *ngIf="PersonelsListQueryByDepartmentId.length > 0">
+    <h3>Bu Departmandaki Personeller</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Email</th>
+        <th>İşe Giriş Tarihi</th>
+        <th>Departman Adı</th>
+        <th>Manager Seç</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let personel of PersonelsListQueryByDepartmentId">
+        <td>{{ personel.firstName }}</td>
+        <td>{{ personel.lastName }}</td>
+        <td>{{ personel.email }}</td>
+        <td>{{ personel.hireDate }}</td>
+        <td>{{ personel.departmentName }}</td>
+        <td>
+          <button (click)="createNewManagerByDepartmentId(personel.id)">
+            Manager Ata
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div *ngIf="DepartmentId !== 0 && PersonelsListQueryByDepartmentId.length === 0 && ErrorMessage.trim() === ''">
+
+    Bu departmanda personel bulunamadı.
+  </div>
+</div>

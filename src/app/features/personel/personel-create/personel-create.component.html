@@ -1,0 +1,58 @@
+﻿<div class="page">
+  <div class="page-header">
+
+<div class="form-card">
+  <h2>Yeni Personel Kaydı</h2>
+
+  <div class="grid">
+    <div class="form-group">
+      <label>Ad</label>
+      <input type="text" [(ngModel)]="form.firstName" (ngModelChange)="generateEmail()" placeholder="Ad" name="firstName"/>
+    </div>
+
+    <div class="form-group">
+      <label>Soyad</label>
+      <input type="text" [(ngModel)]="form.lastName" (ngModelChange)="generateEmail()" placeholder="Soyad" name="lastName"/>
+    </div>
+
+    <div class="form-group">
+      <label>E-posta</label>
+      <input type="text" [value]="form.email" readonly placeholder="E-posta giriniz"/>
+    </div>
+
+    <div class="form-group">
+      <label>Departman</label>
+      <div class="select-wrapper">
+        <select [(ngModel)]="form.departmentId" name="departmentId">
+          <option [ngValue]="0" disabled>Departman seçin</option>
+          <option *ngFor="let department of departmentList" [ngValue]="department.departmentId">
+            {{ department.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group full">
+      <label>İşe Giriş Tarihi</label>
+      <input type="date" [(ngModel)]="form.hireDate" name="hireDate" />
+    </div>
+  </div>
+
+  <button (click)="createPersonel()">
+    Personel Ekle
+  </button>
+</div>
+
+<div class="dialog-backdrop" *ngIf="showDialog">
+  <div class="dialog-box">
+    <h3 [class.success-title]="dialogType === 'success'" [class.error-title]="dialogType === 'error'">
+      {{ dialogType === 'success' ? 'Başarılı' : 'Hata' }}
+    </h3>
+
+    <p>{{ dialogMessage }}</p>
+
+    <button class="dialog-button" (click)="closeDialog()">Tamam</button>
+  </div>
+</div>
+  </div>
+</div>

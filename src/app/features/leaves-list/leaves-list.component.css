@@ -1,0 +1,59 @@
+﻿.leave-page {
+  padding: 24px;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accepted {
+  background-color: #166534;
+}
+
+.pending {
+  background-color: #ca8a04;
+}
+
+.rejected {
+  background-color: #991b1b;
+}
+
+.count {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+th {
+  background-color: #f3f4f6;
+}
