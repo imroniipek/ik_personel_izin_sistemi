@@ -1,9 +1,4 @@
-﻿export interface CreateManagerRequest
-{
-  departmentId: number;
-  managerId: number;
-}
-
+﻿
 export interface CreateManagerResponse {
   departmentId: number;
   departmentName: string;

@@ -30,4 +30,9 @@ export class DepartmentService
     return this.http.get<number>(`${this.controllerUrl}/GetAllOfDepartmentCount`);
   }
 
+  deleteTheManagerByDepartmentId(departmentId:number)
+  {
+    return this.http.delete(`${this.controllerUrl}/DeleteTheManager/${departmentId}`);
+  }
+
 }

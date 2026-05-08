@@ -62,4 +62,20 @@ export class DepartmentInfoComponent implements OnInit {
       }
     });
   }
+
+  deleteTheManagerByDepartmentId(departmentId:number): void
+  {
+    this.departmentService
+      .deleteTheManagerByDepartmentId(departmentId).subscribe({
+        next: () => {
+          this.getAllDepartmentsWithNamesFromDb();
+          this.successMessage = "Yönetici kaldırıldı.";
+        },
+
+        error: (error) => {
+          console.error(error);
+          this.errorMessage = "Yönetici silinemedi.";
+        }
+      });
+  }
 }

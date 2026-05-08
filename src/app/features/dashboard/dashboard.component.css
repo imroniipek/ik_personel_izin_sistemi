@@ -1,20 +1,17 @@
 ﻿.topbar {
   margin-bottom: 24px;
 }
-
 .topbar h1 {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
   color: #1e293b;
 }
-
 .topbar p {
   margin-top: 8px;
   color: #64748b;
   font-size: 15px;
 }
-
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -177,7 +174,6 @@
   z-index: 0;
   pointer-events: none;
 }
-
 .topbar,
 .stats,
 .dashboard-grid {

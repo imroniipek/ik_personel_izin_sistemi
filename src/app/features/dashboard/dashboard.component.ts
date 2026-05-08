@@ -15,8 +15,7 @@ export class DashboardComponent implements OnInit {
   toplamYoneticiSayisi = 0;
   toplamDepartmentSayisi = 0;
 
-  constructor(
-    private personelService: PersonelService,
+  constructor(private personelService: PersonelService,
     private departmentService: DepartmentService,
     private cdr: ChangeDetectorRef
   ) {}
