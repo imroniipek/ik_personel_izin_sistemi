@@ -87,4 +87,16 @@ export class PersonelService {
   {
     return this.http.get<number>(`${this.controllerUrl}/GetTheManagerCount`);
   }
+  updateTheManager(managerId: number, departmentId: number): Observable<void> {
+    return this.http.put<void>(
+      `${this.controllerUrl}/UpdateTheManager`,
+      null,
+      {
+        params: {
+          managerId: managerId,
+          departmentId: departmentId
+        }
+      }
+    );
+  }
 }

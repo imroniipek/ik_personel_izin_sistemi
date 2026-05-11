@@ -1,7 +1,7 @@
 ﻿
 export interface Personel
 {
-  id:number;
+  personelId:number;
 
   firstName: string;
 

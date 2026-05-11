@@ -39,13 +39,48 @@
           <td>{{ department.managerName }}</td>
           <td>
             <ng-container *ngIf="department.managerName != '-'; else noManager">
-              <button class="delete-btn" (click)="deleteTheManagerByDepartmentId(department.departmentId)">Sil</button>
-              <button class="edit-btn">Düzenle</button>
+              <button
+                class="delete-btn"
+                (click)="deleteTheManagerByDepartmentId(department.departmentId)">
+                Sil
+              </button>
+
+              <button
+                class="edit-btn"
+                (click)="openManagerEdit(department.departmentId)">
+                Düzenle
+              </button>
             </ng-container>
+
             <ng-template #noManager>
               ---
             </ng-template>
+          </td>
+        </tr>
 
+        <tr *ngIf="selectedDepartmentIdForEdit !== 0">
+          <td colspan="4">
+            <div class="manager-edit-box">
+              <h3>Yeni Yönetici Seç</h3>
+
+              <select [(ngModel)]="selectedManagerId">
+                <option [ngValue]="0">Personel seçiniz</option>
+
+                <option
+                  *ngFor="let personel of personelListByDepartment"
+                  [ngValue]="personel.personelId">
+                  {{ personel.firstName }} {{ personel.lastName }}
+                </option>
+              </select>
+
+              <button class="save-btn" (click)="updateTheManager()">
+                Kaydet
+              </button>
+
+              <button class="cancel-btn" (click)="cancelManagerEdit()">
+                Vazgeç
+              </button>
+            </div>
           </td>
         </tr>
         </tbody>

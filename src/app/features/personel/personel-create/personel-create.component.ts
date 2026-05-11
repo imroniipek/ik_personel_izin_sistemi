@@ -82,7 +82,7 @@ export class PersonelCreateComponent implements OnInit
       next: (response) => {
         this.loading = false;
 
-        this.openDialog('success', `Personel başarıyla oluşturuldu. ID: ${response.id}`);
+        this.openDialog('success', `Personel başarıyla oluşturuldu. ID: ${response.personelId}`);
 
         this.form = {
           firstName: '',

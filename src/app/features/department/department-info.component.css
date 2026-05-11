@@ -230,22 +230,66 @@
 
 .delete-btn {
   border: 1px solid #dbe7f7;
-  background: #b91c1c;
   color:white;
+  background-color: #991b1b;
   padding: 7px 12px;
-  margin-left: 45px;
+  margin-left: 55px;
   cursor: pointer;
   font-size: 12px;
   font-weight: 700;
+  border-radius: 999px;
   transition: 0.2s ease;
 }
 
-.delete-btn:hover {
-  background: #dc2626;
-  color: white;
-  transform: translateY(-1px);
+.manager-edit-box {
+  background: #eef5ff;
+  border: 1px solid #cfe0ff;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.delete-btn:active {
-  transform: scale(0.96);
+.manager-edit-box h3 {
+  margin: 0;
+  color: #003b7a;
+}
+
+.manager-edit-box select {
+  height: 38px;
+  min-width: 280px;
+  border-radius: 8px;
+  border: 1px solid #b8c9e6;
+  padding: 0 10px;
+}
+
+.save-btn {
+  background: #005baa;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #777;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.edit-btn {
+  border: none;
+  background: #0f766e;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
 }

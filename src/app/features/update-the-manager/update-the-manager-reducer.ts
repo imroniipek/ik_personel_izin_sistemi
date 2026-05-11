@@ -45,6 +45,21 @@ export const updatedManagerReducer = createReducer(
     success: false,
     failure: true,
     error: error
+  })),
+
+  on(AllUpdateManagerActions.updateTheManager,(state,{personelId})=>({
+
+    ...state,
+    loading: false,
+    success: false,
+    failure: true,
+    theManagerId:personelId,
   }))
+
+
+
+
+
+
 );
 
