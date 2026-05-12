@@ -13,10 +13,7 @@
   <div class="form-group">
     <label for="department">Departman Seçiniz</label>
 
-    <select
-      id="department"
-      [value]="DepartmentId"
-      (change)="onDepartmentSelected($event)">
+    <select id="department" [value]="DepartmentId" (change)="onDepartmentSelected($event)">
 
       <option value="0">Departman seçiniz</option>
 
@@ -49,7 +46,7 @@
         <td>{{ personel.hireDate }}</td>
         <td>{{ personel.departmentName }}</td>
         <td>
-          <button (click)="createNewManagerByDepartmentId(personel.personelId)">
+          <button (click)="createNewManagerByDepartmentId(personel.id)">
             Manager Ata
           </button>
         </td>

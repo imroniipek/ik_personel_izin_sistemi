@@ -69,20 +69,23 @@ export class ManagerCreateComponent implements OnInit {
        this.cdr.detectChanges();
      }
   }
-  createNewManagerByDepartmentId(personelId:number)
-  {
-    this.personelService.assignManagerToDepartment(personelId,this.DepartmentId).subscribe(
-      {
-        next:()=>
-        {
-          this.SuccessMessage=`Basarılı bir sekilde ${this.DepartmentId } department'a manager eklendi.`
-        },
-        error: (err: HttpErrorResponse) =>
-        {
-          this.ErrorMessage = err.error.detail;
-        }
+  createNewManagerByDepartmentId(personelId: number): void {
+    this.SuccessMessage = '';
+    this.ErrorMessage = '';
+
+    this.personelService.assignManagerToDepartment(personelId, this.DepartmentId).subscribe({
+      next: () => {
+        this.SuccessMessage = `Başarılı bir şekilde manager atandı.`;
+        this.ErrorMessage = '';
+        this.PersonelsListQueryByDepartmentId = [];
+        this.DepartmentId = 0;
+        this.getAllPersonelByDepartmentIdFromDb(this.DepartmentId);
+      },
+      error: (err: HttpErrorResponse) => {
+        this.SuccessMessage = '';
+        this.ErrorMessage = err.error.detail ?? 'Manager atanırken hata oluştu.';
       }
-    );
+    });
   }
 
   private HasAnyManagerThisDepartment(departmentId: number): boolean

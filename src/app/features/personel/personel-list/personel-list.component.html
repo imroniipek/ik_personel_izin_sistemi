@@ -4,8 +4,43 @@
     <p>Sistemde kayıtlı tüm personelleri buradan görüntüleyebilirsiniz.</p>
   </div>
 
-  <div class="table-wrapper" *ngIf="PersonelList.length > 0; else emptyState">
+  <div class="filter-box">
+    <div class="filter-left">
+      <div class="filter-header">
+        <h3>Departman Filtresi</h3>
+        <p>Personelleri departmana göre listeleyebilirsiniz.</p>
+      </div>
+    </div>
+
+    <div class="filter-content">
+      <label for="department">Departman Seçiniz</label>
+
+      <div class="select-wrapper">
+        <select
+          id="department"
+          [value]="DepartmentId"
+          (change)="onDepartmentSelected($event)">
+
+          <option value="0">Tüm Departmanlar</option>
+
+          <option
+            *ngFor="let department of DepartmentList"
+            [value]="department.departmentId">
+            {{ department.departmentId }} - {{ department.name }}
+          </option>
+
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div
+    class="table-wrapper"
+    *ngIf="PersonelList.length > 0; else emptyState">
+
     <table class="personel-table">
+
       <thead>
       <tr>
         <th>Ad</th>
@@ -17,21 +52,41 @@
       </thead>
 
       <tbody>
+
       <tr *ngFor="let personel of PersonelList">
+
         <td>{{ personel.firstName }}</td>
-        <td>{{personel.lastName}}</td>
+
+        <td>{{ personel.lastName }}</td>
+
         <td>{{ personel.email }}</td>
+
         <td>{{ personel.departmentName }}</td>
-        <td>{{personel.hireDate}}</td>
+
+        <td>{{ personel.hireDate }}</td>
+
+        <td>{{personel.id}}</td>
+
+        <td>
+          <button (click)="deleteThePersonel(personel.id)">
+            Sil
+        </button>
+        </td>
       </tr>
+
       </tbody>
     </table>
   </div>
-
   <ng-template #emptyState>
+
     <div class="empty-box">
+
       <h2>Henüz personel yok</h2>
+
       <p>Veritabanında kayıtlı personel bulunamadı.</p>
+
     </div>
+
   </ng-template>
+
 </div>

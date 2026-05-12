@@ -5,7 +5,10 @@ import {API_BASE_URL_PERSONEL_SERVICE} from '../../consts/api-constants';
 import { CreateDepartmentRequest } from '../models/create-department-request';
 import { ApiResponse } from '../models/api-response';
 import {Department } from '../models/department'
-@Injectable({providedIn: 'root'}) // Bu sınıf bir servistir, bunu sen oluştur ve ihtiyacım olan yerde bana ver
+@Injectable({providedIn: 'root'})
+// Bu sınıf bir servistir, bunu sen oluştur ve ihtiyacım olan yerde bana ver
+
+
 export class DepartmentService
 {
   private readonly controllerUrl = `${API_BASE_URL_PERSONEL_SERVICE}`;
@@ -34,5 +37,4 @@ export class DepartmentService
   {
     return this.http.delete(`${this.controllerUrl}/DeleteTheManager/${departmentId}`);
   }
-
 }

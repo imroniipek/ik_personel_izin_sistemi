@@ -2,6 +2,8 @@
 import { CommonModule } from '@angular/common';
 import { PersonelService } from '../../../core/services/personel-service';
 import { Personel } from '../../../core/models/personel';
+import {Department} from '../../../core/models/department';
+import {DepartmentService} from '../../../core/services/department-service';
 
 @Component({
   selector: 'personel-list',
@@ -11,13 +13,18 @@ import { Personel } from '../../../core/models/personel';
   styleUrl: './personel-list.component.css'
 })
 export class PersonelListComponent implements OnInit {
-  PersonelList: Personel[] = [];
 
-  constructor(private personelService: PersonelService,private cdr:ChangeDetectorRef) {}
+  DepartmentId:number=0;
+  PersonelList: Personel[] = [];
+  DepartmentList:Department[]=[]
+
+  constructor(private personelService: PersonelService,private departmentService:DepartmentService,private cdr:ChangeDetectorRef) {}
 
   ngOnInit(): void
   {
     this.getAllPersonelsFromDb();
+    this.getAllDepartmentFromDb();
+
   }
 
   getAllPersonelsFromDb(): void {
@@ -30,5 +37,51 @@ export class PersonelListComponent implements OnInit {
         console.error('Personeller alınırken hata oluştu:', err);
       },
     });
+  }
+
+  getAllDepartmentFromDb():void
+  {
+    this.departmentService.getAllDepartment().subscribe(
+      {
+        next: (response) => {
+          this.DepartmentList = response;
+        },
+        error: (err) => {
+          console.error('Departmentlar alınırken hata oluştu:', err);
+        },
+      });
+  }
+
+  onDepartmentSelected(event: Event): void
+  {
+    this.DepartmentId = Number((event.target as HTMLSelectElement).value);
+
+    if (this.DepartmentId === 0)
+    {this.getAllPersonelsFromDb();return;}
+
+    this.personelService.getAllPersonelByDepartmentId(this.DepartmentId).subscribe({
+      next: (response) => {
+        this.PersonelList = response;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Personeller alınırken hata oluştu', err);
+      }
+    });
+  }
+
+  deleteThePersonel(personelId:number):void
+  {
+    this.personelService.deleteThePersonel(personelId).subscribe(
+      {
+        next:(response)=>{
+          this.getAllPersonelsFromDb();
+        },
+        error:(err)=>
+        {
+          console.log(err);
+        }
+      }
+    )
   }
 }

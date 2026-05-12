@@ -50,17 +50,17 @@ export class PersonelCreateComponent implements OnInit
     });
   }
 
-  generateEmail(): void {
-    const first = this.form.firstName.trim().toLowerCase();
-    const last = this.form.lastName.trim().toLowerCase();
+  generateEmail(): void
+  {
+    const first = this.form.firstName.trim().toLowerCase().replace(/\s+/g, '');
+    const last = this.form.lastName.trim().toLowerCase().replace(/\s+/g, '');
 
-    if (first && last) {
+    if (first && last)
+    {
       this.form.email = `${first}.${last}@halkbank.com.tr`;
-    } else {
-      this.form.email = '';
     }
+    else {this.form.email = '';}
   }
-
   openDialog(type: 'success' | 'error', message: string): void
   {
     this.dialogType = type;
@@ -82,7 +82,7 @@ export class PersonelCreateComponent implements OnInit
       next: (response) => {
         this.loading = false;
 
-        this.openDialog('success', `Personel başarıyla oluşturuldu. ID: ${response.personelId}`);
+        this.openDialog('success', `Personel başarıyla oluşturuldu. ID: ${response.id}`);
 
         this.form = {
           firstName: '',

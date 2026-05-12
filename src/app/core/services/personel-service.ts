@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import {API_BASE_URL_PERSONEL_SERVICE, API_BASE_URL_APPROVAL_SERVICE} from '../../consts/api-constants';
 import { CreatePersonelRequest } from '../models/personel/create-personel-request';
 import { Personel, PersonelInfoModel } from '../models/personel';
-import { PersonelLoginResponse } from '../models/auth/auth-user';
 import { CreateManagerResponse } from '../models/personel/manager-request';
 import { PendingLeaveInfo } from '../models/leave/pending-leaves-info';
 
@@ -54,30 +53,11 @@ export class PersonelService {
       body
     );
   }
-
-  getPersonelByEmail(email: string): Observable<PersonelLoginResponse> {
-    return this.http.get<PersonelLoginResponse>(
-      `${this.controllerUrl}/GetPersonelByEmail/${email}`
-    );
-  }
-
   getThePersonel(personelId: number): Observable<PersonelInfoModel> {
     return this.http.get<PersonelInfoModel>(
       `${this.controllerUrl}/personels/${personelId}`
     );
   }
-
-  getManagerByEmail(email: string): Observable<PersonelLoginResponse> {
-    return this.http.get<PersonelLoginResponse>(
-      `${this.controllerUrl}/GetManagerByEmail`,
-      {
-        params: {
-          email: email
-        }
-      }
-    );
-  }
-
   getPersonelsPendingList(managerId: number): Observable<PendingLeaveInfo[]> {
     return this.http.get<PendingLeaveInfo[]>(
       `${this.approvalUrl}/GetPendingLeavesListForApprovalByPersonelIdQuery/${managerId}`
@@ -98,5 +78,10 @@ export class PersonelService {
         }
       }
     );
+  }
+
+  deleteThePersonel( personelId:number)
+  {
+    return this.http.delete(`${this.controllerUrl}/DeleteThePersonel/${personelId}`);
   }
 }
