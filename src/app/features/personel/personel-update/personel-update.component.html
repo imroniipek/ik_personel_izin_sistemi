@@ -1,38 +1,80 @@
-﻿<div>
-  <h1>Personel Güncelleme Sayfası</h1>
-  <div>
-    <label>Adi</label>
-    <input type="text" [value]="thePersonel.firstName" [(ngModel)]="thePersonel.firstName"/>
-  </div>
-  <div>
-    <label>SoyAdi</label>
-    <input type="text" [value]="thePersonel.lastName" [(ngModel)]="thePersonel.lastName"/>
-  </div>
-  <div>
-    <label>Email</label>
-    <input type="text" [value]="thePersonel.email" [(ngModel)]="thePersonel.email"/>
-  </div>
-  <div>
-    <label>Department</label>
-    <select [(ngModel)]="thePersonel.departmentId">
-      <option [ngValue]="thePersonel.departmentId">{{returnTheDepartmentName(thePersonel.departmentId)}}</option>
-      <option *ngFor="let department of departmentList" [ngValue]="department.departmentId">
-        {{department.name}}
-      </option>
-    </select>
-  </div>
-  <div>
-    <label>İşe Giriş Tarihi</label>
-    <input type="date" [value]="thePersonel.hireDate" [(ngModel)]="thePersonel.hireDate"/>
-  </div>
-  <button (click)="updateThePersonel()">
-    Güncelle
-  </button>
-  <div *ngIf="successMessage" class="success-message">
-    {{ successMessage }}
-  </div>
+﻿<div class="update-page">
+  <div class="form-card">
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
+    <h1>Personel Güncelleme</h1>
+    <p class="subtitle">
+      Personel bilgilerini düzenleyip güncelleyebilirsiniz.
+    </p>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Adı</label>
+        <input
+          type="text"
+          [value]="thePersonel.firstName"
+          [(ngModel)]="thePersonel.firstName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Soyadı</label>
+        <input
+          type="text"
+          [value]="thePersonel.lastName"
+          [(ngModel)]="thePersonel.lastName"
+        />
+      </div>
+
+      <div class="form-group full">
+        <label>Email</label>
+        <input
+          type="text"
+          [value]="thePersonel.email"
+          [(ngModel)]="thePersonel.email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Departman</label>
+
+        <select [(ngModel)]="thePersonel.departmentId">
+          <option [ngValue]="thePersonel.departmentId">
+            {{ returnTheDepartmentName(thePersonel.departmentId) }}
+          </option>
+
+          <option
+            *ngFor="let department of departmentList"
+            [ngValue]="department.departmentId"
+          >
+            {{ department.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>İşe Giriş Tarihi</label>
+
+        <input
+          type="date"
+          [value]="thePersonel.hireDate"
+          [(ngModel)]="thePersonel.hireDate"
+        />
+      </div>
+
+    </div>
+
+    <button class="update-button" (click)="updateThePersonel()">
+      Güncelle
+    </button>
+
+    <div *ngIf="successMessage.trim()" class="success-message">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage.trim()" class="error-message">
+      {{ errorMessage }}
+    </div>
+
   </div>
 </div>
