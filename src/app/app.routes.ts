@@ -12,15 +12,19 @@ import { ManagerPanelComponent } from './features/manager-panel/manager-panel.co
 import { PersonelPanelComponent } from './features/personel-panel/personel-panel.component';
 import {ManagerinfoComponent} from './features/managerinfo/managerinfo-component';
 import {PendingLeavesListComponent} from './features/pending-leaves-list/pending-leaves-list.component';
+import {PersonelUpdateComponent} from './features/personel/personel-update/personel-update.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-
   { path: 'dashboard', component: DashboardComponent },
+
   { path: 'departments/create', component: DepartmentInfoComponent },
   { path: 'personels/create', component: PersonelCreateComponent },
   { path: 'personels/list', component: PersonelListComponent },
+
+  { path: 'personel-update/:id', component: PersonelUpdateComponent },
+
   { path: 'manager/create', component: ManagerCreateComponent },
 
   {
@@ -33,6 +37,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'bilgilerim', pathMatch: 'full' }
     ]
   },
+
   {
     path: 'manager',
     component: ManagerPanelComponent,

@@ -4,11 +4,12 @@ import { PersonelService } from '../../../core/services/personel-service';
 import { Personel } from '../../../core/models/personel';
 import {Department} from '../../../core/models/department';
 import {DepartmentService} from '../../../core/services/department-service';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'personel-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './personel-list.component.html',
   styleUrl: './personel-list.component.css'
 })
@@ -74,7 +75,7 @@ export class PersonelListComponent implements OnInit {
   {
     this.personelService.deleteThePersonel(personelId).subscribe(
       {
-        next:(response)=>{
+        next:()=>{
           this.getAllPersonelsFromDb();
         },
         error:(err)=>

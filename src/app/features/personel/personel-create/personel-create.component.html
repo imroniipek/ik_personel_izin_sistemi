@@ -3,7 +3,6 @@
 
 <div class="form-card">
   <h2>Yeni Personel Kaydı</h2>
-
   <div class="grid">
     <div class="form-group">
       <label>Ad</label>
@@ -43,14 +42,12 @@
   </button>
 </div>
 
-<div class="dialog-backdrop" *ngIf="showDialog">
+<div *ngIf="showDialog" class="dialog-backdrop">
   <div class="dialog-box">
     <h3 [class.success-title]="dialogType === 'success'" [class.error-title]="dialogType === 'error'">
       {{ dialogType === 'success' ? 'Başarılı' : 'Hata' }}
     </h3>
-
     <p>{{ dialogMessage }}</p>
-
     <button class="dialog-button" (click)="closeDialog()">Tamam</button>
   </div>
 </div>

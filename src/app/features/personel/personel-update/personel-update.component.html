@@ -1,0 +1,38 @@
+﻿<div>
+  <h1>Personel Güncelleme Sayfası</h1>
+  <div>
+    <label>Adi</label>
+    <input type="text" [value]="thePersonel.firstName" [(ngModel)]="thePersonel.firstName"/>
+  </div>
+  <div>
+    <label>SoyAdi</label>
+    <input type="text" [value]="thePersonel.lastName" [(ngModel)]="thePersonel.lastName"/>
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="text" [value]="thePersonel.email" [(ngModel)]="thePersonel.email"/>
+  </div>
+  <div>
+    <label>Department</label>
+    <select [ngModel]="thePersonel.departmentId">
+      <option [ngValue]="thePersonel.departmentId"></option>
+      <option *ngFor="let department of departmentList" [ngValue]="department.departmentId">
+        {{department.name}}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label>İşe Giriş Tarihi</label>
+    <input type="date" [value]="thePersonel.hireDate" [(ngModel)]="thePersonel.hireDate"/>
+  </div>
+  <button (click)="updateThePersonel()">
+    Güncelle
+  </button>
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>

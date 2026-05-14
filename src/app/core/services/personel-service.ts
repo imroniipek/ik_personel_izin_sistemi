@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {API_BASE_URL_PERSONEL_SERVICE, API_BASE_URL_APPROVAL_SERVICE} from '../../consts/api-constants';
 import { CreatePersonelRequest } from '../models/personel/create-personel-request';
-import { Personel, PersonelInfoModel } from '../models/personel';
+import {Personel, PersonelForUpdate, PersonelInfoModel} from '../models/personel';
 import { CreateManagerResponse } from '../models/personel/manager-request';
 import { PendingLeaveInfo } from '../models/leave/pending-leaves-info';
 
@@ -27,6 +27,13 @@ export class PersonelService {
     return this.http.get<Personel[]>(
       `${this.controllerUrl}/GetAllOfPersonel`
     );
+  }
+
+  getThePersonelByPersonelId(personelId:number):Observable<PersonelForUpdate>
+  {
+    return this.http.get<PersonelForUpdate>(
+      `${this.controllerUrl}/GetThePersonelByPersonelId/${personelId}`
+    )
   }
 
   createNewPersonel(payload: CreatePersonelRequest): Observable<Personel> {
@@ -84,4 +91,8 @@ export class PersonelService {
   {
     return this.http.delete(`${this.controllerUrl}/DeleteThePersonel/${personelId}`);
   }
+
+  updateThePersonel(personelId:number, personel:PersonelForUpdate)
+{
+  return this.http.put(`${this.controllerUrl}/UpdateThePersonel/${personelId}`,personel);}
 }

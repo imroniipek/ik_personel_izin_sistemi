@@ -2,10 +2,10 @@
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
 import { PendingLeaveInfo } from '../../core/models/leave/pending-leaves-info';
 import * as PendingLeavesListActions from './pending-leaves-list.action';
 import { LeaveStatus } from '../../core/models/leave/leave';
+import {AuthService} from '../../core/services/auth-service';
 
 @Component({
   selector: 'app-pending-leaves-list',
@@ -20,9 +20,9 @@ export class PendingLeavesListComponent implements OnInit {
   loading$: Observable<boolean>;
   errorMessage$: Observable<string | null>;
 
-  managerId: number = 11;
 
-  constructor(private store: Store<any>) {
+
+  constructor(private store: Store<any>, private authService: AuthService) {
     this.pendingLeaves$ = this.store.select(state => state.pendingLeaveList.data);
     this.loading$ = this.store.select(state => state.pendingLeaveList.loading);
     this.errorMessage$ = this.store.select(state => state.pendingLeaveList.errorMessage);
@@ -31,7 +31,7 @@ export class PendingLeavesListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(
       PendingLeavesListActions.getPendingLeavesList({
-        managerId: this.managerId
+        managerId: this.authService.getPersonelId()
       })
     );
   }
@@ -45,7 +45,7 @@ export class PendingLeavesListComponent implements OnInit {
           endedDate: leave.endendDate,
           status: LeaveStatus.Approved
         },
-        managerId: this.managerId
+        managerId: this.authService.getPersonelId()
       })
     );
   }
@@ -59,7 +59,7 @@ export class PendingLeavesListComponent implements OnInit {
           endedDate: leave.endendDate,
           status: LeaveStatus.Rejected
         },
-        managerId: this.managerId
+        managerId:this.authService.getPersonelId()
       })
     );
   }

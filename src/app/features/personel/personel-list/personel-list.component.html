@@ -36,8 +36,8 @@
   </div>
 
   <div
-    class="table-wrapper"
-    *ngIf="PersonelList.length > 0; else emptyState">
+    *ngIf="PersonelList.length > 0; else emptyState"
+    class="table-wrapper">
 
     <table class="personel-table">
 
@@ -48,6 +48,7 @@
         <th>Email</th>
         <th>Departman</th>
         <th>İşe Giriş Tarihi</th>
+        <th>İşlemler</th>
       </tr>
       </thead>
 
@@ -64,13 +65,13 @@
         <td>{{ personel.departmentName }}</td>
 
         <td>{{ personel.hireDate }}</td>
-
-        <td>{{personel.id}}</td>
-
         <td>
           <button (click)="deleteThePersonel(personel.id)">
             Sil
         </button>
+          <button [routerLink]="['/personel-update', personel.id]">
+            Güncelle
+          </button>
         </td>
       </tr>
 

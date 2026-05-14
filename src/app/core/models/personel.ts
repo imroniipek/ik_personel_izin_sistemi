@@ -26,3 +26,17 @@ export interface PersonelInfoModel
   hireDate:string,
 
 }
+export interface PersonelForUpdate
+{
+  id:number;
+
+  firstName: string;
+
+  lastName: string;
+
+  email: string;
+
+  hireDate: string;
+
+  departmentId:number;
+}
