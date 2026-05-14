@@ -82,4 +82,10 @@ export class PersonelUpdateComponent implements OnInit
       }
     )
   }
+  returnTheDepartmentName(departmentId: number): string
+  {
+    const department = this.departmentList.find(x => x.departmentId === departmentId);
+
+    return department ? department.name : 'Departman bulunamadı'
+  }
 }

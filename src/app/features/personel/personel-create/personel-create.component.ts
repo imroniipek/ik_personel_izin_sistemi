@@ -94,9 +94,7 @@ export class PersonelCreateComponent implements OnInit
       },
       error: (err: HttpErrorResponse) => {
         this.loading = false;
-
         let message = '';
-
         if (err.error.detail!=null)
         {
           message = err.error.detail;
@@ -105,7 +103,6 @@ export class PersonelCreateComponent implements OnInit
         {
           message="Bilinmeyen Bir Hata Oluştu";
         }
-
         this.openDialog('error', message);
       }
     });

@@ -14,8 +14,8 @@
   </div>
   <div>
     <label>Department</label>
-    <select [ngModel]="thePersonel.departmentId">
-      <option [ngValue]="thePersonel.departmentId"></option>
+    <select [(ngModel)]="thePersonel.departmentId">
+      <option [ngValue]="thePersonel.departmentId">{{returnTheDepartmentName(thePersonel.departmentId)}}</option>
       <option *ngFor="let department of departmentList" [ngValue]="department.departmentId">
         {{department.name}}
       </option>
